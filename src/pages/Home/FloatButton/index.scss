@@ -1,0 +1,9 @@
+.floatbutton-wrap {
+  .ant-float-btn-body {
+    // background: var(--elevation-low-background);
+    background: var(--color-background);
+  }
+  .ant-float-btn-icon {
+    color: var(--color-secondary-label)!important;
+  }
+}

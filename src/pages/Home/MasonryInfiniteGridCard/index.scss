@@ -1,0 +1,140 @@
+//卡片等样式
+.cardcontent {
+  // width: 100%;
+  height: calc(100% - 72px);
+  overflow: hidden scroll;
+  // overflow: visible;
+  .item {
+    display: inline-block;
+    // width: 20%;
+    width: 250px;
+    box-sizing: border-box;
+    .card {
+      cursor: pointer;
+    }
+    .poster-wrap {
+      &:hover {
+        &:before {
+          z-index: 1;
+          opacity: 1;
+        }
+      }
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.5s;
+        border-radius: 16px;
+        opacity: 0;
+        z-index: 0;
+      }
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+    }
+    .poster {
+      position: relative;
+      display: block;
+      width: 100%;
+      border-radius: 16px;
+    }
+    .title {
+      padding: 0 12px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--theme-font-color1);
+      box-sizing: border-box;
+    }
+    .info {
+      padding: 0 12px 12px;
+      box-sizing: border-box;
+      .msg {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .info-auth {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        color: var(--theme-font-color2);
+        font-size: 12px;
+        transition: color 1s;
+      }
+      .avatar {
+        margin-right: 6px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+      .name {
+        &:hover {
+          color: var(--theme-font-color1);
+        }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+      .like {
+        &:hover {
+          color: var(--theme-font-color1);
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--theme-font-color2);
+        cursor: pointer;
+        .num {
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+  .card-placeholder {
+    &::before {
+      position: absolute;
+      display: block;
+      content: "";
+      top: 0;
+      left: -160px;
+      width: 80px;
+      height: 250px;
+      background: -webkit-linear-gradient(
+        left,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-35deg);
+      animation: rolled 1s ease infinite;
+    }
+    position: relative;
+    width: 250px;
+    border-radius: 5px;
+    background: var(--theme-font-color2);
+    // background: #eee;
+    height: 250px;
+    overflow: hidden;
+  }
+}
+
+
+
+//卡片占位图动画
+@keyframes rolled {
+  0% {
+    left: -30%;
+  }
+
+  100% {
+    left: 130%;
+  }
+}

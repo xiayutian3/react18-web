@@ -1,0 +1,45 @@
+.left-swiper {
+  height: 100%;
+  .swiper {
+    height: 100%;
+  }
+  .swiper-wrapper {
+    height: 100%;
+  }
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+  }
+  .swiper-button-prev,.swiper-button-next{
+    // position: absolute;
+    // top: 50%;
+    // width: 25px;
+    // height: 25px;
+    &::after{
+      // display: none;
+      // color: var(--color-background);
+      color: #fff;
+      font-size:25px;
+    }
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #fff;
+  }
+  .video-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+//查看大图
+.swiper-img-preview{
+  .ant-image-mask{
+    display: none;
+  }
+  .ant-image-preview-mask{
+    background: var(--color-background);
+  }
+}

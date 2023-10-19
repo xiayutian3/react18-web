@@ -1,0 +1,102 @@
+.notification-wrap {
+  .tab-wrap {
+    //吸顶实现
+    .dy-tab-wrap {
+      position: sticky;
+      z-index: 99;
+      top: -16px;
+    }
+    //tab样式
+    .ant-tabs-tab {
+      padding: 0px 16px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      height: 40px;
+      cursor: pointer;
+      color: var(--color-secondary-label);
+      white-space: nowrap;
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0.25, 1);
+      z-index: 1;
+    }
+    .ant-tabs .ant-tabs-tab + .ant-tabs-tab {
+      margin: 0;
+    }
+    .ant-tabs-tab-active {
+      // font-weight: 600;
+      // color: var(--color-primary-label);
+    }
+    .ant-tabs .ant-tabs-tab-btn:active {
+      color: var(--color-primary-label);
+    }
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-weight: 600;
+      color: var(--color-primary-label) !important;
+    }
+    .ant-tabs .ant-tabs-tab:hover {
+      color: var(--color-primary-label);
+    }
+    .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar {
+      // display: none;
+      height: 40px;
+      background-color: var(--color-active-background);
+      opacity: 0.9;
+      border-radius: 20px;
+    }
+    .ant-tabs-nav-wrap {
+      padding: 16px 0;
+    }
+    .sticky-tabs-nav {
+      transition: none;
+      background: var(--mask-paper);
+    }
+    .ant-tabs-top > div > .ant-tabs-nav::before {
+      // border-bottom: 1px solid var(--mask-paper);
+    }
+    .ant-tabs-top > div > .ant-tabs-nav::before {
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .notification-wrap {
+    .tab-wrap {
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 70%;
+    }
+  }
+}
+@media screen and (min-width: 960px) {
+  .notification-wrap {
+    .tab-wrap {
+      margin: 0 auto;
+      padding: 0 24px;
+      // width: 70%;
+    }
+  }
+}
+@media screen and (max-width: 695px) {
+  .notification-wrap {
+    .tab-wrap {
+      .ant-tabs-top > div > .ant-tabs-nav {
+        margin: 0;
+      }
+      .container {
+        padding-top: 16px;
+      }
+      .main {
+        padding-bottom: 16px;
+      }
+      .user-avatar img,
+      .user-avatar span {
+        width: 36px;
+        height: 36px;
+      }
+      .user-avatar {
+        margin-right: 16px;
+      }
+    }
+  }
+}

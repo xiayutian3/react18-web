@@ -1,0 +1,30 @@
+.pv-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+  padding: 0;
+  // padding: 10px 0;
+  // display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  background: var(--color-background);
+  z-index: 1;
+  cursor: pointer;
+  color: #333;
+  span {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:48px;
+    color: var(--color-tertiary-label);
+  }
+  .act{
+    span{
+      color: var(--color-primary-label);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.pv-emoji{
+  position: relative;
+  color: var(--color-quaternary-label);
+  cursor: pointer;
+  .layer{
+    padding: 12px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -166px;
+    left: -80px;
+    width: 150px;
+    font-size: 21px;
+    color: red;
+    cursor: pointer;
+    background: var(--elevation-high-background);
+    box-shadow: var(--elevation-high-shadow);
+    border-radius: 12px;
+  }
+  .layer-none{
+    display: none;
+  }
+
+}
