@@ -3,7 +3,6 @@ import {
   Breadcrumb,
   Form,
   Button,
-  Radio,
   Input,
   Upload,
   Space,
@@ -13,7 +12,6 @@ import {
 import { PlusOutlined } from "@ant-design/icons";
 import { Link, useSearchParams } from "react-router-dom";
 import "./index.scss";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useStore } from "@/store";
 import { observer } from "mobx-react-lite";
@@ -22,7 +20,6 @@ import { http } from "@/utils";
 
 const { Option } = Select;
 const { TextArea } = Input;
-
 
 const Publish = () => {
   const { channelStore } = useStore();
@@ -46,13 +43,11 @@ const Publish = () => {
     fileListRef.current = fileList;
   };
 
-
   //视频上传部分
   const [fileListVideo, setFileListVideo] = useState([]);
   const onUploadVideoChange = () => {
-    console.log('onUploadVideoChange: ', onUploadVideoChange);
-  }
-
+    console.log("onUploadVideoChange: ", onUploadVideoChange);
+  };
 
   // 发布
   const onFinish = async (values) => {
@@ -63,48 +58,17 @@ const Publish = () => {
       channel_id,
       content,
     };
-    try {
-      if (articleId) {
-        // 编辑
-        await http.put(`/mp/articles/${articleId}?draft=false`, params);
-      } else {
-        // 新增
-        await http.post("/mp/articles?draft=false", params);
-      }
-    } catch (error) {
-      console.log("error: ", error);
-    }
     // 提示用户
-    navigator("/article");
-    message.success(`${articleId}` ? "更新成功" : "发布成功");
+    // navigator("/article");
+    message.success("发布成功");
   };
 
-  // 回显编辑文章
-  const [params] = useSearchParams();
-  const articleId = params.get("id");
+  // const [params] = useSearchParams();
+  // const articleId = params.get("id");
   // 数据回填  id调用接口  1.表单回填 2.暂存列表 3.Upload组件fileList
   const [form] = Form.useForm();
 
-  useEffect(() => {
-    async function getArticle() {
-      try {
-        const res = await http.get(`/mp/articles/${articleId}`);
-        const { cover, ...formValue } = res.data;
-        // 动态设置表单数据
-        form.setFieldsValue({ ...formValue, type: cover.type });
-        // 格式化封面图片数据
-        const imageList = cover.images.map((url) => ({ url }));
-        setFileList(imageList);
-        fileListRef.current = imageList;
-      } catch (error) {
-        console.log("error: ", error);
-      }
-    }
-    if (articleId) {
-      // 拉取数据回显
-      getArticle();
-    }
-  }, [articleId, form]); //事实上只需要发送一次及就可以了，填上id是为了解决警告问题
+  useEffect(() => {});
 
   return (
     <div className="publish">
@@ -114,10 +78,7 @@ const Publish = () => {
             <Breadcrumb.Item>
               <Link to="/">首页</Link>
             </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              {" "}
-              {articleId ? "修改" : "发布"}
-            </Breadcrumb.Item>
+            <Breadcrumb.Item>发布</Breadcrumb.Item>
           </Breadcrumb>
         }
       >
@@ -135,7 +96,7 @@ const Publish = () => {
             rules={[{ required: true, message: "请输入文章标题" }]}
           >
             {/* style={{ width: 400 }} */}
-            <Input placeholder="请输入文章标题"  />
+            <Input placeholder="请输入文章标题" />
           </Form.Item>
           <Form.Item
             className="form-item"
@@ -143,7 +104,7 @@ const Publish = () => {
             name="channel_id"
             rules={[{ required: true, message: "请选择文章分类" }]}
           >
-            <Select placeholder="请选择文章分类" >
+            <Select placeholder="请选择文章分类">
               {channelStore.channelList.map((item) => (
                 <Option key={item.id} value={item.id}>
                   {item.name}
@@ -161,45 +122,45 @@ const Publish = () => {
           </Form.Item>
 
           <Form.Item label="图片" className="form-item">
-              <Upload
-                name="image"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList
-                multiple
-                action="http://123"
-                accept="image/*"
-                fileList={fileList}
-                onChange={onUploadChange}
-              >
-                <div style={{ marginTop: 8 }}>
-                  <PlusOutlined className="upload-icon" />
-                </div>
-              </Upload>
+            <Upload
+              name="image"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList
+              multiple
+              action="http://123"
+              accept="image/*"
+              fileList={fileList}
+              onChange={onUploadChange}
+            >
+              <div style={{ marginTop: 8 }}>
+                <PlusOutlined className="upload-icon" />
+              </div>
+            </Upload>
           </Form.Item>
 
           <Form.Item label="视频" className="form-item">
-              <Upload
-                name="video"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList
-                multiple
-                action="http://123"
-                accept="video/*"
-                fileList={fileListVideo}
-                onChange={onUploadVideoChange}
-              >
-                <div style={{ marginTop: 8 }}>
-                  <PlusOutlined className="upload-icon" />
-                </div>
-              </Upload>
+            <Upload
+              name="video"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList
+              multiple
+              action="http://123"
+              accept="video/*"
+              fileList={fileListVideo}
+              onChange={onUploadVideoChange}
+            >
+              <div style={{ marginTop: 8 }}>
+                <PlusOutlined className="upload-icon" />
+              </div>
+            </Upload>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 4 }}>
             <Space>
               <Button size="large" type="primary" htmlType="submit">
-                {articleId ? "修改" : "发布"}
+                发布
               </Button>
             </Space>
           </Form.Item>
